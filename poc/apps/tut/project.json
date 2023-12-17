@@ -1,0 +1,61 @@
+{
+  "name": "tut",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/tut/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/tut",
+        "main": "apps/tut/src/main.ts",
+        "tsConfig": "apps/tut/tsconfig.app.json",
+        "assets": [
+          "apps/tut/src/assets"
+        ],
+        "webpackConfig": "apps/tut/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tut:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tut:build:development"
+        },
+        "production": {
+          "buildTarget": "tut:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": [
+        "{options.outputFile}"
+      ]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/tut/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

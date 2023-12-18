@@ -14,9 +14,11 @@
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
+        "strictPropertyInitialization": false,
         "paths": {
             "@poc/auth": ["src/libs/shared/auth/src/index.ts"],
             "@poc/bookmark": ["src/libs/tut/bookmark/src/index.ts"],
+            "@poc/prisma": ["src/libs/shared/prisma/src/index.ts"],
             "@poc/user": ["src/libs/shared/user/src/index.ts"]
         }
     },

@@ -44,7 +44,7 @@ export class AuthService {
         };
     }
 
-    generateAccessToken(id: number, email: string): Promise<string> {
+    generateAccessToken(id: string, email: string): Promise<string> {
         const payload = { sub: id, email };
 
         return this.jwtService.signAsync(payload);

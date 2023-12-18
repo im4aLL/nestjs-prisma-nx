@@ -4,14 +4,12 @@ import { SigninDto, SignupDto } from './dto';
 import * as argon from 'argon2';
 import { User } from '@prisma/client';
 import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
     constructor(
         private prisma: PrismaService,
-        private jwtService: JwtService,
-        private config: ConfigService
+        private jwtService: JwtService
     ) {}
 
     async signup(dto: SignupDto): Promise<User> {
